@@ -1,13 +1,19 @@
 import React from 'react'
 import Header from './Header'
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
+import usePopularMovies from '../hooks/usePopularMovies';
+import useTopRatedMovies from '../hooks/useTopRatedMovies';
+import useUpcomingMovies from '../hooks/useUpcomingMovies';
 import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
 
 const Browse = () => {
 
-  // Fetch Now Playing Movies
+  // Fetch Movies
   useNowPlayingMovies();
+  useTopRatedMovies();
+  usePopularMovies();
+  useUpcomingMovies();
 
   return (
     <div>
@@ -16,7 +22,7 @@ const Browse = () => {
       <SecondaryContainer />
     </div>
   );
-  
+
 }
 
 export default Browse
