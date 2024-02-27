@@ -3,24 +3,23 @@ import { useSelector } from 'react-redux';
 import VideoTitle from './VideoTitle';
 import VideoBackground from './VideoBackground';
 import { MOVIE_POSTER_URL } from '../utils/constants';
-import { over } from 'lodash';
 
 const MainContainer = () => {
   const movies = useSelector(store => store.movies?.nowPlayingMovies);
   if (!movies) return;
 
-  const mainMovie = movies[0];
+  const mainMovie = movies[9];
 
-  const { original_title, overview } = mainMovie;
+  const { original_title, overview, id } = mainMovie;
 
+  // console.log(movies);
   return (
     <div>
       {/* {mainMovie && <img src={`${MOVIE_POSTER_URL}${mainMovie.backdrop_path}`} alt={mainMovie.title} />} */}
       <VideoTitle title={original_title} overview={overview} />
-      <VideoBackground />
+      <VideoBackground movieId={id} />
     </div>
   );
-
 }
 
 export default MainContainer
