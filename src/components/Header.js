@@ -21,7 +21,7 @@ const Header = () => {
   }
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName, photoURL } = user;
         dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL })
@@ -32,6 +32,8 @@ const Header = () => {
         navigate('/');
       }
     });
+
+    return (() => unsubscribe());
   }, [])
 
   return (
@@ -48,7 +50,7 @@ const Header = () => {
           <img
             className='w-12 h-12'
             alt="user-avatar"
-              src={user?.photoURL || USER_AVATAR}
+              src={USER_AVATAR || user?.photoURL}
           />
             <button onClick={handleSignOut} className='font-bold text-white'>(Sign out)</button>
         </div>

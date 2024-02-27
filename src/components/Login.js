@@ -5,15 +5,14 @@ import { useState, useRef } from 'react';
 import checkValidData from '../utils/validate';
 import { auth } from '../utils/firebase';
 import { updateProfile } from "firebase/auth";
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from "../utils/userSlice";
+import { USER_AVATAR, BG_URL } from "../utils/constants";
 
 const Login = () => {
 
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errMessage, setErrMessage] = useState("");
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
 
@@ -45,7 +44,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://avatars.githubusercontent.com/u/62304758?v=4"
+            photoURL: {USER_AVATAR}
           }).then(() => {
             // dipatch the user to the redux store
 
@@ -82,7 +81,7 @@ const Login = () => {
       <Header />
       <div className="absolute">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/2e07bc25-8b8f-4531-8e1f-7e5e33938793/e4b3c14a-684b-4fc4-b14f-2b486a4e9f4e/IN-en-20240219-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          src={BG_URL}
           alt="browse"
         />
       </div>

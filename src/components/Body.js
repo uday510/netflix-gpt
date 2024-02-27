@@ -11,7 +11,7 @@ const Body = () => {
       element: <Login />
     },
     {
-      path: "/browse", // authenticated route
+      path: "/browse", 
       element: <Browse />
     }
   ]);
