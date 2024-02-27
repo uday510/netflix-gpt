@@ -21,10 +21,10 @@ export const BG_URL =
 
 export const SUPPORTED_LANGUAGES = [
   { identifier: "en", name: "English" },
-  { identifier: "hindi", name: "Hindi" },
+  { identifier: "telugu", name: "Telugu" },
+  { identifier: "tamil", name: "Tamil" },
   { identifier: "spanish", name: "Spanish" },
 ];
-
 
 export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
 

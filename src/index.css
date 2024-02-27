@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.flex::-webkit-scrollbar {
+  display: none;
+}

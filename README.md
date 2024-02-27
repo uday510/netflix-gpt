@@ -28,6 +28,7 @@
 - Update Store with Trailer video data.
 - Embedded the youtube video and make it autoplay and mute
 - Tailwind Classes to make Main Container look nice
+- GPT Search Feature
 
 # Features
 

@@ -44,7 +44,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: {USER_AVATAR}
+            photoURL: { USER_AVATAR }
           }).then(() => {
             // dipatch the user to the redux store
 
@@ -82,7 +82,7 @@ const Login = () => {
       <div className="absolute">
         <img
           src={BG_URL}
-          alt="browse"
+          alt="logo"
         />
       </div>
       <form
