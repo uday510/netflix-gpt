@@ -8,11 +8,15 @@ import { updateProfile } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { addUser } from "../utils/userSlice";
 import { USER_AVATAR, BG_URL } from "../utils/constants";
+import Spinner from "./Spinner";
+import "../index.css";
 
 const Login = () => {
 
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errMessage, setErrMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const dispatch = useDispatch();
 
 
@@ -32,6 +36,8 @@ const Login = () => {
 
     if (message) return;
 
+    setIsLoading(true);
+
     // sign in or sign up the user
     if (!isSignInForm) {
       // sign up logic
@@ -46,32 +52,39 @@ const Login = () => {
             displayName: name.current.value,
             photoURL: { USER_AVATAR }
           }).then(() => {
-            // dipatch the user to the redux store
-
+            // dispatch the user to the redux store
             const { uid, email, displayName, photoURL } = auth.currentUser;
             dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
           }).catch((error) => {
             setErrMessage(error.message);
-          });
+          })
+            .finally(() => {
+              // set loading state to false
+              setIsLoading(false);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-
           setErrMessage(errorCode + " " + errorMessage);
+        })
+        .finally(() => {
+          // set loading state to false
+          setIsLoading(false);
         });
     } else {
-
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then()
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-
           setErrMessage(errorCode + " " + errorMessage);
+        })
+        .finally(() => {
+          // set loading state to false
+          setIsLoading(false);
         });
     }
-
   }
 
   return (
@@ -112,7 +125,7 @@ const Login = () => {
           className="p-4 my-4 w-full bg-gray-800"
         />
         {errMessage && <p className="text-red-500 font-bold text-lg py-2">{errMessage}</p>}
-        <button className="p-4 my-4 bg-red-700 w-full rounded-lg" onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>
+        {isLoading ? <Spinner /> : <button className="p-4 my-4 bg-red-700 w-full rounded-lg" onClick={handleButtonClick}>{isSignInForm ? "Sign In" : "Sign Up"}</button>}
         <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>{isSignInForm ? "New to Netflix? Sign Up Now" : "Already registered? Sign In Now."}</p>
       </form>
     </div>
