@@ -4,12 +4,11 @@ export const LOGO =
 export const USER_AVATAR =
   "https://occ-0-6247-2164.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABdpkabKqQAxyWzo6QW_ZnPz1IZLqlmNfK-t4L1VIeV1DY00JhLo_LMVFp936keDxj-V5UELAVJrU--iUUY2MaDxQSSO-0qw.png?r=e6e";
 
-export const API_OPTIONS = {
+export const TMDB_API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    // Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
-    Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNTU1NzI5OTA5MTVlODUzNWZiOTA5NzI4NDk2YjM4NSIsInN1YiI6IjY1ZGQ5YmNjMzk1NDlhMDE4NzRmNjc3MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.aPKl5qMYOs-hArwnzzj40CCf1y6DEP8NcXq8nnoNw6Y",
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_API_KEY, 
   },
 };
 
@@ -26,5 +25,4 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "spanish", name: "Spanish" },
 ];
 
-export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;
-
+export const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY;

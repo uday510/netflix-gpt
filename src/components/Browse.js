@@ -23,10 +23,10 @@ const Browse = () => {
       <Header />
       {
         showGptSearch ? < GptSearch /> :
-          <>
+          <div>
             <MainContainer />
             <SecondaryContainer />
-          </>
+          </div>
       }
 
     </div>

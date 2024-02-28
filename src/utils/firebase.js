@@ -2,13 +2,10 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
-// TODO : Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBs0vADqY-7chXCOa46BdzpSZWbwoLd7_4",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "useful-sunup-329315.firebaseapp.com",
   projectId: "useful-sunup-329315",
   storageBucket: "useful-sunup-329315.appspot.com",
